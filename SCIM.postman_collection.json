@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "9e815ee5-b894-4ecf-b8f3-da74ccc8896d",
+		"name": "SCIM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GroupsScim",
+			"item": []
+		},
+		{
+			"name": "SchemasScim",
+			"item": []
+		},
+		{
+			"name": "ResourceTypesScim",
+			"item": []
+		},
+		{
+			"name": "ServiceProviderScim",
+			"item": []
+		},
+		{
+			"name": "UsersScim",
+			"item": [
+				{
+					"name": "/scim/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/scim/users",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"scim",
+								"users"
+							]
+						},
+						"description": "Get a document by path"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

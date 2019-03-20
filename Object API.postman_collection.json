@@ -1,0 +1,1475 @@
+{
+	"info": {
+		"_postman_id": "b5cff6d9-3ebc-a47b-82a7-297fc0736180",
+		"name": "Object API",
+		"description": "The Object API exposes create, read, update, and delete actions for items that are commonly worked with in the SpringCM user interface.  The objects are exposed using RESTful conventions and JSON is the supported Request/Response format. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AttributeGroups",
+			"item": [
+				{
+					"name": "/attributegroups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/attributegroups/bb605e80-8d6d-e711-9c0d-3ca82a1e3f41?expand=attributes",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"attributegroups",
+								"bb605e80-8d6d-e711-9c0d-3ca82a1e3f41"
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "attributes"
+								}
+							]
+						},
+						"description": "Get an attribute group"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DocLauncherConfigurations",
+			"item": [
+				{
+					"name": "/doclauncherconfigurations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/doclauncherconfigurations",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"doclauncherconfigurations"
+							]
+						},
+						"description": "Get a document by path"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "/documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents?path=%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FDocuments%2FTest%20Documents%2FTest%20document.docx",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FDocuments%2FTest%20Documents%2FTest%20document.docx"
+								}
+							]
+						},
+						"description": "Get a document by path"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}?expand=AttributeGroups",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}"
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "AttributeGroups",
+									"description": "(ParentFolder): Folder object in which the document resides. \n(Path): Full folder path to the document in the account. \n(HistoryItems): History of actions performed on the document. \n(Versions): Previous versions of the document. \n(Lock): If the document is locked and by whom. \n(EosParentInfo): Information about the external object storage folder that contains the document. \n(ShareLinks): All of the share links that have been created for the document. \n(DocumentProcessTrackingActivities): Workflow user steps containing the document. \n(AttributeGroups): Attribute groups saved on the document."
+								}
+							]
+						},
+						"description": "Get a document by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/documentreminders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/documentreminders?pageSortParams=",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"documentreminders"
+							],
+							"query": [
+								{
+									"key": "pageSortParams",
+									"value": "",
+									"description": "Offset (integer): The number of objects at the beginning of the collection to skip,\nLimit (integer): The number of objects per page,\nSortProperty (string): The property of the collection object on which to sort,\nSortDirection (string) = ['ASC' or 'DESC']: ASC for ascending. DESC for descending,\nFilter (string): The property of the collection object on which to filter"
+								}
+							]
+						},
+						"description": "Get the document reminders for a document"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/historyitems",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/documentreminders?pageSortParams=",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"documentreminders"
+							],
+							"query": [
+								{
+									"key": "pageSortParams",
+									"value": "",
+									"description": "Offset (integer): The number of objects at the beginning of the collection to skip,\nLimit (integer): The number of objects per page,\nSortProperty (string): The property of the collection object on which to sort,\nSortDirection (string) = ['ASC' or 'DESC']: ASC for ascending. DESC for descending,\nFilter (string): The property of the collection object on which to filter"
+								}
+							]
+						},
+						"description": "Get the history of a document"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/sharelinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/sharelinks?pageSortParams=",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"sharelinks"
+							],
+							"query": [
+								{
+									"key": "pageSortParams",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get the share links of a document"
+					},
+					"response": [
+						{
+							"name": "Sharelink Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "bearer {{access_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{prefix}}{{version}}/documents/{{docid}}/sharelinks?pageSortParams=",
+									"host": [
+										"{{prefix}}{{version}}"
+									],
+									"path": [
+										"documents",
+										"{{docid}}",
+										"sharelinks"
+									],
+									"query": [
+										{
+											"key": "pageSortParams",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": ""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": ""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": ""
+								},
+								{
+									"key": "Content-Length",
+									"value": "366",
+									"name": "Content-Length",
+									"description": ""
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "",
+									"name": "Content-Security-Policy",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": ""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 24 Jul 2017 20:31:21 GMT",
+									"name": "Date",
+									"description": ""
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": ""
+								},
+								{
+									"key": "P3P",
+									"value": "policyref=\"https://login.springcm.com/atlassupport/w3c/p3p.xml\",CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\"",
+									"name": "P3P",
+									"description": ""
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": ""
+								},
+								{
+									"key": "Server",
+									"value": "",
+									"name": "Server",
+									"description": ""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=3600",
+									"name": "Strict-Transport-Security",
+									"description": ""
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "",
+									"name": "X-AspNet-Version",
+									"description": ""
+								},
+								{
+									"key": "X-AspNetMvc-Version",
+									"value": "",
+									"name": "X-AspNetMvc-Version",
+									"description": ""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "",
+									"name": "X-Powered-By",
+									"description": ""
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Sat Jan 09 2038 22:14:07 GMT-0600 (CST)",
+									"httpOnly": false,
+									"domain": "springcm.com",
+									"path": "/",
+									"secure": true,
+									"value": "3542096EA4615B726C2322269FB5755E|X2RlZmF1bHR8MQ",
+									"key": "dtCookie"
+								}
+							],
+							"body": "{\"Items\":[],\"Href\":\"https://apiuatna11.springcm.com/v201411/documents/2aa0e990-026c-e711-9c0d-3ca82a1e3f41/sharelinks\",\"Offset\":0,\"Limit\":20,\"First\":\"https://apiuatna11.springcm.com/v201411/documents/2aa0e990-026c-e711-9c0d-3ca82a1e3f41/sharelinks\",\"Last\":\"https://apiuatna11.springcm.com/v201411/documents/2aa0e990-026c-e711-9c0d-3ca82a1e3f41/sharelinks\",\"Total\":0}"
+						}
+					]
+				},
+				{
+					"name": "/documents/{id}",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"AttributeGroups\": {\n        \"Contracts New\": {\n            \"Description\": {\n                \"AttributeType\": \"String\",\n                \"RepeatingAttribute\": false,\n                \"Value\": \"Test Description\"\n            },\n            \"Start Date\": {\n                \"AttributeType\": \"Date\",\n                \"RepeatingAttribute\": false\n            },\n            \"End Date\": {\n                \"AttributeType\": \"Date\",\n                \"RepeatingAttribute\": false\n            },\n            \"Auto Renew\": {\n                \"AttributeType\": \"DropDown\",\n                \"RepeatingAttribute\": false\n            },\n            \"Termination Notice\": {\n                \"AttributeType\": \"DropDown\",\n                \"RepeatingAttribute\": false\n            },\n            \"Negotiation Reminder\": {\n                \"AttributeType\": \"DropDown\",\n                \"RepeatingAttribute\": false\n            },\n            \"Expiration Reminder\": {\n                \"AttributeType\": \"DropDown\",\n                \"RepeatingAttribute\": false\n            },\n            \"DollarValue\": {\n                \"AttributeType\": \"Number\",\n                \"RepeatingAttribute\": false\n            }\n        },\n        \"Test Group Add\": {\n            \"Loan Number\": {\n                \"AttributeType\": \"String\",\n                \"RepeatingAttribute\": false,\n                \"Value\": \"12345\"\n            }\n        }\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}"
+							]
+						},
+						"description": "Make partial updates to a document."
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/lock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/lock",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"lock"
+							]
+						},
+						"description": "Make partial updates to a document."
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/lock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/lock",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"lock"
+							]
+						},
+						"description": "Get the lock status of a document"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/lock",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"IsLocked\": false\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/lock",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"lock"
+							]
+						},
+						"description": "Update a lock on a document"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "/documents/:id",
+							"path": [
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Move a document to the trash folder."
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/documentprocesstrackingactivities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}/documentprocesstrackingactivities?pageSortParams=",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"documentprocesstrackingactivities"
+							],
+							"query": [
+								{
+									"key": "pageSortParams",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get the worfklow user steps containing a document"
+					},
+					"response": []
+				},
+				{
+					"name": "/documents/{id}/historyitems",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documents/{{docid}}//historyitems?filter=action%3Dpreview%20mode,action%3DDownload%20Document%20PDF",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documents",
+								"{{docid}}",
+								"",
+								"historyitems"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "action%3Dpreview%20mode,action%3DDownload%20Document%20PDF"
+								}
+							]
+						},
+						"description": "Get the worfklow user steps containing a document"
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD calls that can be made on documents."
+		},
+		{
+			"name": "Folders",
+			"item": [
+				{
+					"name": "/folders/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41?expand=Security",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"f9b22329-709d-e711-9c0d-3ca82a1e3f41"
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "Security"
+								}
+							]
+						},
+						"description": "Get a folder by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders/{id}/documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents?Limit=100",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"f9b22329-709d-e711-9c0d-3ca82a1e3f41",
+								"documents"
+							],
+							"query": [
+								{
+									"key": "Limit",
+									"value": "100"
+								}
+							]
+						},
+						"description": "Get the documents in a folder"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders/{id} EOS Expand",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41?expand=Eosinfo",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41"
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "Eosinfo"
+								}
+							]
+						},
+						"description": "Get a folder by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders/{id}/folders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/folders",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"f8e7c854-759d-e711-9c0d-3ca82a1e3f41",
+								"folders"
+							]
+						},
+						"description": "Get the folders in a folder"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders/{id}/sharelinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/sharelinks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"f8e7c854-759d-e711-9c0d-3ca82a1e3f41",
+								"sharelinks"
+							]
+						},
+						"description": "Get the share links of a folder"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders (path)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders?path=%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder"
+								}
+							]
+						},
+						"description": "Get a folder by path or system folder type"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders (path) getByEOS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders?eosObjectType=Salesforce.Account&eosObjectId=0011I000006a3DQQAY",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders"
+							],
+							"query": [
+								{
+									"key": "eosObjectType",
+									"value": "Salesforce.Account"
+								},
+								{
+									"key": "eosObjectId",
+									"value": "0011I000006a3DQQAY"
+								}
+							]
+						},
+						"description": "Get a folder by path or system folder type"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders (search)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders?search=folder",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "folder"
+								}
+							]
+						},
+						"description": "Search for folders"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders/{id} copy",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\": \"TestFolder\",\n    \"CreatedDate\": \"2017-09-19T19:24:35.69Z\",\n    \"CreatedBy\": \"dheintzelman@springcm.com\",\n    \"UpdatedDate\": \"2017-09-19T19:24:35.69Z\",\n    \"UpdatedBy\": \"dheintzelman@springcm.com\",\n    \"Description\": \"A desription!\",\n    \"ParentFolder\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/d4442423-709d-e711-9c0d-3ca82a1e3f41\"\n    },\n    \"BrowseDocumentsUrl\": \"https://uatna11.springcm.com/atlas/Link/Folder/8806/f9b22329-709d-e711-9c0d-3ca82a1e3f41\",\n    \"AccessLevel\": {\n        \"See\": true,\n        \"Read\": true,\n        \"Write\": true,\n        \"Move\": true,\n        \"Create\": true,\n        \"SetAccess\": true\n    },\n    \"Documents\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents\"\n    },\n    \"Folders\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/folders\"\n    },\n    \"ShareLinks\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/sharelinks\"\n    },\n    \"CreateDocumentHref\": \"https://apiuploaduatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents{?name}\",\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"f9b22329-709d-e711-9c0d-3ca82a1e3f41"
+							]
+						},
+						"description": "Get a folder by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders (non EOS)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1d61766b-e9b5-4470-9663-e7f4322afc05",
+								"exec": [
+									"var iterator = postman.getGlobalVariable(\"folderIterator\");",
+									"iterator ++;",
+									"postman.setGlobalVariable(\"folderIterator\", iterator);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"New Folder {{folderIterator}}\",\n  \"ParentFolder\": {\n      \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders"
+							]
+						},
+						"description": "Create a folder"
+					},
+					"response": []
+				},
+				{
+					"name": "/folders (EOS)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var iterator = postman.getGlobalVariable(\"folderIterator\");",
+									"iterator ++;",
+									"postman.setGlobalVariable(\"folderIterator\", iterator);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"\",\n  \"EosInfo\": {\n        \"Name\": \"Salesforce/TestContract\",\n        \"Path\": \"Salesforce/APITest\",\n        \"ObjectId\": \"8001I000000c8prQAA\",\n        \"ObjectType\": \"Salesforce.Contract\",\n        \"Folder\": \"\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders"
+							]
+						},
+						"description": "Create an EOS folder"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls that can be made to query, create, and modify folders within SpringCM."
+		},
+		{
+			"name": "ShareLinks",
+			"item": [
+				{
+					"name": "/sharelinks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Url\": \"\",\n  \"ExpirationDate\": \"2017-10-10\",\n  \"AllowNativeDownload\": false,\n  \"AllowPdfDownload\": false,\n  \"PreviewBehavior\": \"\",\n  \"CreatedBy\": \"\",\n  \"UpdatedBy\": \"\",\n  \"CreatedDate\": \"\",\n  \"UpdatedDate\": \"\",\n\n  \"Document\": \n  {\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/documents/2aa0e990-026c-e711-9c0d-3ca82a1e3f41\"\n  },\n  \"Href\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/sharelinks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"sharelinks"
+							]
+						},
+						"description": "Create a share link"
+					},
+					"response": []
+				},
+				{
+					"name": "/sharelinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/sharelinks/5365f87a-7771-e711-9c0d-3ca82a1e3f41",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"sharelinks",
+								"5365f87a-7771-e711-9c0d-3ca82a1e3f41"
+							]
+						},
+						"description": "Get a share link using the GUID of the share link"
+					},
+					"response": []
+				},
+				{
+					"name": "/sharelinks *Change Preview Behvavior",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Url\": \"\",\n  \"ExpirationDate\": \"2018-10-10\",\n  \"AllowNativeDownload\": false,\n  \"AllowPdfDownload\": false,\n  \"PreviewBehavior\": \"DownloadNative\",\n  \"CreatedBy\": \"\",\n  \"UpdatedBy\": \"\",\n  \"CreatedDate\": \"\",\n  \"UpdatedDate\": \"\",\n\n  \"Document\": \n  {\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/documents/29085ca0-36f2-e711-9c10-3ca82a1e3f41\"\n  },\n  \"Href\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/sharelinks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"sharelinks"
+							]
+						},
+						"description": "Create a share link using different preview behaviors"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Workflows",
+			"item": [
+				{
+					"name": "/workflows/{instanceId}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/workflows/abcff970-54a8-e711-8376-005056b948f7",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"workflows",
+								"abcff970-54a8-e711-8376-005056b948f7"
+							]
+						},
+						"description": "Get a workflow instance"
+					},
+					"response": []
+				},
+				{
+					"name": "/workflows",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"API Test\",\n  \"Params\": \"<Params><Documents><Document><Id>2aa0e990-026c-e711-9c0d-3ca82a1e3f41</Id></Document></Documents></Params>\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/workflows",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"workflows"
+							]
+						},
+						"description": "Start a workflow instance by definition name"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WorkItems",
+			"item": [
+				{
+					"name": "/workitems/{id} *NOT DONE*",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/workitems/2876694",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"workitems",
+								"2876694"
+							]
+						},
+						"description": "Get a work item"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/users/{id}/workitems *NOT DONE*",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/users/217ee98f-a26c-e711-9c0d-3ca82a1e3f41/workitems",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"users",
+								"217ee98f-a26c-e711-9c0d-3ca82a1e3f41",
+								"workitems"
+							]
+						},
+						"description": "Get the workflow inbox of a user"
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/users?sortproperty=UserName&sortdirection=asc",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "sortproperty",
+									"value": "UserName"
+								},
+								{
+									"key": "sortdirection",
+									"value": "asc"
+								}
+							]
+						},
+						"description": "Get the users in the current account"
+					},
+					"response": []
+				},
+				{
+					"name": "/users{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/users/21359bed-894c-e811-9c12-3ca82a1e3f41",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"users",
+								"21359bed-894c-e811-9c12-3ca82a1e3f41"
+							]
+						},
+						"description": "Get the users in the current account"
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0b4f243f-0a9c-40d6-ba46-51c183507d23",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"EnableStartDate\":{{timestamp}}\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/users/21359bed-894c-e811-9c12-3ca82a1e3f41",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"users",
+								"21359bed-894c-e811-9c12-3ca82a1e3f41"
+							]
+						},
+						"description": "Update a user"
+					},
+					"response": []
+				},
+				{
+					"name": "/users/current/workitems",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/users/current/workitems",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"users",
+								"current",
+								"workitems"
+							]
+						},
+						"description": "Get the workflow inbox of the current user"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

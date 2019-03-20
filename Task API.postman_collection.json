@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "aa1e44c9-2ba6-0a89-cf1a-3a4c74e7c073",
+		"name": "Task API",
+		"description": "As the name implies the [Task API](https://developer.springcm.com/node/559) exposes SpringCM services as tasks that can be executed and monitored programmatically.  The Task API includes methods for document generation, document manipulation, advanced search and other long running document operations.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FolderArchiveTasks",
+			"item": [
+				{
+					"name": "/folders/{id}/documents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"DocumentsToZip\", responseBody);",
+									"console.log(responseBody);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folders/{{DocumentsFolder}}/documents",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folders",
+								"{{DocumentsFolder}}",
+								"documents"
+							]
+						},
+						"description": "\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/folderarchivetasks",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// folderItems = JSON.parse(DocumentsToZip);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"BaseFolder\": {\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/622f282c-2393-e711-9c0d-3ca82a1e3f41\"\n  },\n  \"DocumentsToZip\": {{DocumentsToZip}},\n  \"FoldersToZip\": {\n    \"Items\": [ ],\n    \"Href\": \"\",\n    \"Offset\": 0,\n    \"Limit\": 0,\n    \"First\": \"\",\n    \"Previous\": \"\",\n    \"Next\": \"\",\n    \"Last\": \"\",\n    \"Total\": 0\n  },\n  \"ArchiveSize\": 0,\n  \"ResultDocument\": \"Document\",\n  \"Message\": \"\",\n  \"DownloadUrl\": \"\",\n  \"DestinationFolder\": {\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/81bbaa32-2393-e711-9c0d-3ca82a1e3f41\"\n  },\n  \"DestinationDocumentName\": \"ZippedDocuments.zip\",\n  \"Status\": \"\",\n  \"Href\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folderarchivetasks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folderarchivetasks"
+							]
+						},
+						"description": "Create a zip of documents and folders"
+					},
+					"response": []
+				},
+				{
+					"name": "/folderarchivetasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"DocumentsToZip\", responseBody);",
+									"console.log(responseBody);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/folderarchivetasks/{{taskid}}",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"folderarchivetasks",
+								"{{taskid}}"
+							]
+						},
+						"description": "\n\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Create and check the status of document and folder archival processes"
+		},
+		{
+			"name": "SalesforceAttachmentImportTasks",
+			"item": [
+				{
+					"name": "/salesforceattachmentimporttasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Folder\": {\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41\"\n}\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/salesforceattachmentimporttasks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"salesforceattachmentimporttasks"
+							]
+						},
+						"description": "Import attachments from a Salesforce object into the current account"
+					},
+					"response": []
+				}
+			],
+			"description": "Tasks for importing notes and attachments from Salesforce Objects into the current account."
+		},
+		{
+			"name": "DocumentSearchTasks",
+			"item": [
+				{
+					"name": "/documentsearchtasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Content\": \"test\",\n  \"Extensions\": \"\",\n  \"UpdatedOnOrAfter\": \"\",\n  \"UpdatedOnOrBefore\": \"\",\n  \"AnyAttributeField\": \"\",\n  \"Status\": \"\",\n  \"AllWords\": \"\",\n  \"AnyWords\": \"\",\n  \"WithoutWords\": \"\",\n  \"Phrase\": \"\",\n  \"IncludeSubFolders\": true,\n  \"Title\": \"\",\n  \"Description\": \"\",\n  \"UpdatedBy\": \"User\",\n  \"Result\": {\n    \"Items\": [\n      {\n        \"Href\": \"\"\n      }\n    ],\n    \"Href\": \"\",\n    \"Offset\": 0,\n    \"Limit\": 0,\n    \"First\": \"\",\n    \"Previous\": \"\",\n    \"Next\": \"\",\n    \"Last\": \"\",\n    \"Total\": 0\n  },\n  \"Href\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/documentsearchtasks/?sortproperty=name&sortdirection=asc&expand=AttributeGroups",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"documentsearchtasks",
+								""
+							],
+							"query": [
+								{
+									"key": "sortproperty",
+									"value": "name"
+								},
+								{
+									"key": "sortdirection",
+									"value": "asc"
+								},
+								{
+									"key": "expand",
+									"value": "AttributeGroups"
+								}
+							]
+						},
+						"description": "Search for documents"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DocLauncherTasks",
+			"item": [
+				{
+					"name": "/doclaunchertasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "oauth fd9803892ccb47929dbb0293fd5eb3390eTPgxgFgCe2UkklUkWapAE9T7RQOH9RG0MjE4uOmifGrMQs0hzXLPgzaU5jfP1ZCMweXBhZ0HxHe7SGrjZrRmF0TWIu8KtW"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Data\": \"<Parameters><Language>English</Language></Parameters>\",\r\n\t\"DataType\": \"xml\",\r\n\t\"DestinationFolder\": {\r\n\t\t\"Href\": \"https://apieu11.springcm.com/v201411/folders/c1ae99af-9746-e811-9c13-30e17155e337\"\r\n\t},\r\n\t\"DocLauncherConfiguration\": { \r\n\t\t\"Href\": \"https://apieu11.springcm.com/v201411/doclauncherconfigurations/c2027dd6-cafe-4fcf-b181-01246534c831\"\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/doclaunchertasks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"doclaunchertasks"
+							]
+						},
+						"description": "Search for documents"
+					},
+					"response": []
+				},
+				{
+					"name": "/doclaunchertasks (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "oauth {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Data\": \"{\\\"Params\\\": {\\\"Name\\\": \\\"does this work?\\\",\\\"Legal_Entity_Id\\\": \\\"does this work?\\\"}}\",\r\n\t\"DataType\": \"JSON\",\r\n\t\"DocLauncherConfiguration\": { \r\n\t\t\"Href\": \"https://apiuatna11.springcm.com/v201411/doclauncherconfigurations/d68396b4-953d-406b-bb98-c15a60f90502\"\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{prefix}}{{version}}/doclaunchertasks",
+							"host": [
+								"{{prefix}}{{version}}"
+							],
+							"path": [
+								"doclaunchertasks"
+							]
+						},
+						"description": "Search for documents"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

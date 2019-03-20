@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "4029858e-3453-376b-a765-d6ddb5a7bb3a",
+		"name": "Authentication",
+		"description": "Use these calls to authenticate and gain access to an API token that be used to make subquent calls against the API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API User Authentication Flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6dfff43e-75f7-4846-9cde-2617a3e54d66",
+						"exec": [
+							"authenticateBody = JSON.parse(responseBody)",
+							"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
+							"console.log(authenticateBody.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client_id\": \"{{client_id}}\", \n  \"client_secret\": \"{{client_secret}}\"\n}"
+				},
+				"url": {
+					"raw": "{{authprefix}}/api/v201606/apiuser",
+					"host": [
+						"{{authprefix}}"
+					],
+					"path": [
+						"api",
+						"v201606",
+						"apiuser"
+					]
+				},
+				"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token"
+			},
+			"response": []
+		},
+		{
+			"name": "Salesforce Client Flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b0ea01a-3da1-4e8b-9570-63322906068d",
+						"exec": [
+							"authenticateBody = JSON.parse(responseBody)",
+							"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
+							"console.log(authenticateBody.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"session_id\": \"00D410000007wGm!AQUAQFL99DwcUfZchu91Q7wquvHJf0PWVASKEN3gfNb97JsXCAzeJg5aFZixA1ug4Jb.Iqvh1IXtbDoTH_u.Yn1Q7FyQVd75\",\n  \"api_url\": \"https://heintzelmancm-dev-ed.my.salesforce.com/services/Soap/u/41.0\",\n  \"client_id\": \"{{client_id_oauth}}\",\n  \"client_secret\": \"{{client_secret_oauth}}\"\n}"
+				},
+				"url": {
+					"raw": "{{authprefix}}/api/v201606/salesforce",
+					"host": [
+						"{{authprefix}}"
+					],
+					"path": [
+						"api",
+						"v201606",
+						"salesforce"
+					]
+				},
+				"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token"
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth  2.0",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Acc",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\":\"f845734c98d143688f2d16f0741f38a4eHqWY2irfTDIjZgamoNmfeWeiolZkJQjPIN4SINcWLhU3HfdkKOMfUG9uMytQIHVDd2aLlHebuPU6ClbJIzZ4DE4BNJGTdMO\",\n  \"grant_type\":\"authorization_code\",\n  \"client_id\": \"a27b002e-50cc-440f-9247-6a4f2e005ab1\",\n  \"client_secret\": \"f7a72ace8eed4773a3d9f1130361f034AgJjrcwKQbsQG4riWN7cjIaRZdMvMcNJ05Q4ImojfIqHjDBx8gLukA81F2JOPA7xNjZKnxauiY6bcTrWbYxqRdj07ZzPcaTf\"\n}"
+				},
+				"url": {
+					"raw": "https://authuat.springcm.com/api/v201606/token",
+					"protocol": "https",
+					"host": [
+						"authuat",
+						"springcm",
+						"com"
+					],
+					"path": [
+						"api",
+						"v201606",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
