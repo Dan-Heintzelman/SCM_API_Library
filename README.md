@@ -11,14 +11,14 @@ There are two different ways to Import this postman Library into your Postman wo
 
 Clone this repo and then select "Import" from the top left of the Postman Workspace:
 
-![Image of Import Button](urlhere)
+![Image of Import Button](https://github.com/Heintzdm/SCM_API_Library/blob/master/images/Import_Image.png)
 
 
 Finally, select all of the files ending in collection.json. You will see your postman collections tab populate with all of the collections. 
 
 To import environmets, select the cog wheel at the top righthand side of Postman:
 
-![Image of Cog Wheel here](urlhere)
+![Image of Cog Wheel here](https://github.com/Heintzdm/SCM_API_Library/blob/master/images/cog_wheel.png)
 
 Select "Import" and then choose all environments that you wish to import (UAT,EU11,NA11,NA21 **missing EU 21**)
 
