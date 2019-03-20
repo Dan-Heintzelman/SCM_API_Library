@@ -208,7 +208,7 @@
 				{
 					"id": "0f516c40-73f2-4358-8c72-245373a2eab0",
 					"name": "/folders/{id}/documents",
-					"url": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents?Limit=100",
+					"url": "{{prefix}}{{version}}/folders/{{folderid}}/documents?Limit=100",
 					"description": "Get the documents in a folder",
 					"data": null,
 					"dataMode": null,
@@ -227,7 +227,10 @@
 					"queryParams": [
 						{
 							"key": "Limit",
-							"value": "100"
+							"value": "100",
+							"equals": true,
+							"description": "",
+							"enabled": true
 						}
 					],
 					"auth": null,
@@ -484,7 +487,7 @@
 				{
 					"id": "1dd9accd-4af1-4070-8a51-e8f0d87bbeba",
 					"name": "/folders/{id}/folders",
-					"url": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/folders",
+					"url": "{{prefix}}{{version}}/folders/{{folderid}}/folders",
 					"description": "Get the folders in a folder",
 					"data": null,
 					"dataMode": null,
@@ -690,7 +693,9 @@
 						{
 							"key": "pageSortParams",
 							"value": "",
-							"description": "Offset (integer): The number of objects at the beginning of the collection to skip,\nLimit (integer): The number of objects per page,\nSortProperty (string): The property of the collection object on which to sort,\nSortDirection (string) = ['ASC' or 'DESC']: ASC for ascending. DESC for descending,\nFilter (string): The property of the collection object on which to filter"
+							"equals": true,
+							"description": "Offset (integer): The number of objects at the beginning of the collection to skip,\nLimit (integer): The number of objects per page,\nSortProperty (string): The property of the collection object on which to sort,\nSortDirection (string) = ['ASC' or 'DESC']: ASC for ascending. DESC for descending,\nFilter (string): The property of the collection object on which to filter",
+							"enabled": true
 						}
 					],
 					"auth": null,
@@ -828,7 +833,7 @@
 				{
 					"id": "5ee05ea0-f364-4f4b-b648-ac25fcb56a95",
 					"name": "/folders/{id}",
-					"url": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41?expand=Security",
+					"url": "{{prefix}}{{version}}/folders/{{folderid}}?expand=Security",
 					"description": "Get a folder by ID",
 					"data": null,
 					"dataMode": null,
@@ -847,7 +852,10 @@
 					"queryParams": [
 						{
 							"key": "expand",
-							"value": "Security"
+							"value": "Security",
+							"equals": true,
+							"description": "",
+							"enabled": true
 						}
 					],
 					"auth": null,
@@ -966,7 +974,7 @@
 				{
 					"id": "86eef040-1d07-405b-aeef-181ee45ba585",
 					"name": "/folders/{id}/sharelinks",
-					"url": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/sharelinks",
+					"url": "{{prefix}}{{version}}/folders/{{folderid}}/sharelinks",
 					"description": "Get the share links of a folder",
 					"data": null,
 					"dataMode": null,
@@ -1331,7 +1339,7 @@
 				{
 					"id": "d59c6737-2c6f-4710-846e-7f04a5f53943",
 					"name": "/folders/{id} EOS Expand",
-					"url": "{{prefix}}{{version}}/folders/0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41?expand=Eosinfo",
+					"url": "{{prefix}}{{version}}/folders/{{eosfolderid}}?expand=Eosinfo",
 					"description": "Get a folder by ID",
 					"data": null,
 					"dataMode": null,
@@ -1350,7 +1358,10 @@
 					"queryParams": [
 						{
 							"key": "expand",
-							"value": "Eosinfo"
+							"value": "Eosinfo",
+							"equals": true,
+							"description": "",
+							"enabled": true
 						}
 					],
 					"auth": null,
@@ -1365,7 +1376,7 @@
 				{
 					"id": "d6e36428-7d20-4df7-875d-c2b94032aaba",
 					"name": "/folders/{id} copy",
-					"url": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41",
+					"url": "{{prefix}}{{version}}/folders/{{folderid}}",
 					"description": "Get a folder by ID",
 					"data": [],
 					"dataMode": "raw",
@@ -1454,7 +1465,7 @@
 				{
 					"id": "fb032d08-ae2b-44ec-8e99-9136d71e9f70",
 					"name": "/folders (path)",
-					"url": "{{prefix}}{{version}}/folders?path=%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder",
+					"url": "{{prefix}}{{version}}/folders?path=enter folder path here",
 					"description": "Get a folder by path or system folder type",
 					"data": null,
 					"dataMode": null,
@@ -1473,7 +1484,10 @@
 					"queryParams": [
 						{
 							"key": "path",
-							"value": "%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder"
+							"value": "enter folder path here",
+							"equals": true,
+							"description": "",
+							"enabled": true
 						}
 					],
 					"auth": null,
@@ -1599,143 +1613,6 @@
 					"helperAttributes": null,
 					"collectionId": "3dcfbc25-ae68-4acf-94dd-b7f3d35e12e2",
 					"headers": "Authorization: bearer {{access_token}}\nContent-Type: application/json\n",
-					"pathVariables": {}
-				}
-			]
-		},
-		{
-			"id": "48acb30a-4edc-4739-8b52-8eef809de473",
-			"name": "Authentication",
-			"description": "Use these calls to authenticate and gain access to an API token that be used to make subquent calls against the API.",
-			"auth": null,
-			"events": null,
-			"variables": [],
-			"order": [
-				"7dd5b0ee-2ce4-46ee-aca1-6a2305079da1",
-				"49b23b4a-d67f-4506-bf0d-d6efaefdfea1",
-				"bb1bc110-95ad-404e-8cc1-65b76a3be9e2"
-			],
-			"folders_order": [],
-			"folders": [],
-			"requests": [
-				{
-					"id": "49b23b4a-d67f-4506-bf0d-d6efaefdfea1",
-					"name": "Salesforce Client Flow",
-					"url": "{{authprefix}}/api/v201606/salesforce",
-					"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token",
-					"data": [],
-					"dataMode": "raw",
-					"headerData": [
-						{
-							"key": "Accept",
-							"value": "application/json"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"method": "POST",
-					"pathVariableData": [],
-					"queryParams": [],
-					"auth": null,
-					"events": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "7b0ea01a-3da1-4e8b-9570-63322906068d",
-								"exec": [
-									"authenticateBody = JSON.parse(responseBody)",
-									"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
-									"console.log(authenticateBody.access_token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"folder": null,
-					"preRequestScript": null,
-					"tests": "authenticateBody = JSON.parse(responseBody)\npostman.setGlobalVariable(\"access_token\", authenticateBody.access_token);\nconsole.log(authenticateBody.access_token)",
-					"currentHelper": null,
-					"helperAttributes": null,
-					"collectionId": "48acb30a-4edc-4739-8b52-8eef809de473",
-					"rawModeData": "",
-					"headers": "Accept: application/json\nContent-Type: application/json\n",
-					"pathVariables": {}
-				},
-				{
-					"id": "7dd5b0ee-2ce4-46ee-aca1-6a2305079da1",
-					"name": "API User Authentication Flow",
-					"url": "{{authprefix}}/api/v201606/apiuser",
-					"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token",
-					"data": [],
-					"dataMode": "raw",
-					"headerData": [
-						{
-							"key": "Accept",
-							"value": "application/json"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"method": "POST",
-					"pathVariableData": [],
-					"queryParams": [],
-					"auth": null,
-					"events": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "6dfff43e-75f7-4846-9cde-2617a3e54d66",
-								"exec": [
-									"authenticateBody = JSON.parse(responseBody)",
-									"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
-									"console.log(authenticateBody.access_token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"folder": null,
-					"preRequestScript": null,
-					"tests": "authenticateBody = JSON.parse(responseBody)\npostman.setGlobalVariable(\"access_token\", authenticateBody.access_token);\nconsole.log(authenticateBody.access_token)",
-					"currentHelper": null,
-					"helperAttributes": null,
-					"collectionId": "48acb30a-4edc-4739-8b52-8eef809de473",
-					"rawModeData": "",
-					"headers": "Accept: application/json\nContent-Type: application/json\n",
-					"pathVariables": {}
-				},
-				{
-					"id": "bb1bc110-95ad-404e-8cc1-65b76a3be9e2",
-					"name": "Oauth  2.0",
-					"url": "https://authuat.springcm.com/api/v201606/token",
-					"description": "",
-					"data": [],
-					"dataMode": "raw",
-					"headerData": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Acc",
-							"value": "application/json"
-						}
-					],
-					"method": "POST",
-					"pathVariableData": [],
-					"queryParams": [],
-					"auth": null,
-					"events": null,
-					"folder": null,
-					"currentHelper": null,
-					"helperAttributes": null,
-					"collectionId": "48acb30a-4edc-4739-8b52-8eef809de473",
-					"rawModeData": "",
-					"headers": "Content-Type: application/json\nAcc: application/json\n",
 					"pathVariables": {}
 				}
 			]
@@ -2464,6 +2341,143 @@
 					"helperAttributes": null,
 					"collectionId": "c0e8ba5d-62fc-4407-8b27-731796170944",
 					"headers": "Authorization: bearer {{access_token}}\n",
+					"pathVariables": {}
+				}
+			]
+		},
+		{
+			"id": "f1295e27-879e-42c7-95de-4dcef1100b51",
+			"name": "Authentication",
+			"description": "Use these calls to authenticate and gain access to an API token that be used to make subquent calls against the API.",
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [
+				"6c86888d-83ed-471f-a6fa-c5c6e321f5a8",
+				"6466aa7d-2f60-4dac-8bfd-277699338b7f",
+				"c82be31b-4db9-4b2f-aa75-3e0fed9778c8"
+			],
+			"folders_order": [],
+			"folders": [],
+			"requests": [
+				{
+					"id": "6466aa7d-2f60-4dac-8bfd-277699338b7f",
+					"name": "Salesforce Client Flow",
+					"url": "{{authprefix}}/api/v201606/salesforce",
+					"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token",
+					"data": [],
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Accept",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b0ea01a-3da1-4e8b-9570-63322906068d",
+								"exec": [
+									"authenticateBody = JSON.parse(responseBody)",
+									"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
+									"console.log(authenticateBody.access_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "authenticateBody = JSON.parse(responseBody)\npostman.setGlobalVariable(\"access_token\", authenticateBody.access_token);\nconsole.log(authenticateBody.access_token)",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "f1295e27-879e-42c7-95de-4dcef1100b51",
+					"rawModeData": "{\n  \"session_id\": \"00D410000007wGm!AQUAQFL99DwcUfZchu91Q7wquvHJf0PWVASKEN3gfNb97JsXCAzeJg5aFZixA1ug4Jb.Iqvh1IXtbDoTH_u.Yn1Q7FyQVd75\",\n  \"api_url\": \"https://heintzelmancm-dev-ed.my.salesforce.com/services/Soap/u/41.0\",\n  \"client_id\": \"{{client_id_oauth}}\",\n  \"client_secret\": \"{{client_secret_oauth}}\"\n}",
+					"headers": "Accept: application/json\nContent-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "6c86888d-83ed-471f-a6fa-c5c6e321f5a8",
+					"name": "API User Authentication Flow",
+					"url": "{{authprefix}}/api/v201606/apiuser",
+					"description": "API User Authentication flow is intended to be used by back end batch operations for which there is not an end user that authenticates to the API.  With API user authentication, a client id is mapped to an API user and then is used in place of a SpringCM refresh token to obtain a SpringCM REST API access token",
+					"data": [],
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Accept",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6dfff43e-75f7-4846-9cde-2617a3e54d66",
+								"exec": [
+									"authenticateBody = JSON.parse(responseBody)",
+									"postman.setGlobalVariable(\"access_token\", authenticateBody.access_token);",
+									"console.log(authenticateBody.access_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "authenticateBody = JSON.parse(responseBody)\npostman.setGlobalVariable(\"access_token\", authenticateBody.access_token);\nconsole.log(authenticateBody.access_token)",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "f1295e27-879e-42c7-95de-4dcef1100b51",
+					"rawModeData": "{\n  \"client_id\": \"{{client_id}}\", \n  \"client_secret\": \"{{client_secret}}\"\n}",
+					"headers": "Accept: application/json\nContent-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "c82be31b-4db9-4b2f-aa75-3e0fed9778c8",
+					"name": "Oauth  2.0",
+					"url": "https://authuat.springcm.com/api/v201606/token",
+					"description": null,
+					"data": [],
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Acc",
+							"value": "application/json"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": null,
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "f1295e27-879e-42c7-95de-4dcef1100b51",
+					"rawModeData": "{\n  \"code\":\"f845734c98d143688f2d16f0741f38a4eHqWY2irfTDIjZgamoNmfeWeiolZkJQjPIN4SINcWLhU3HfdkKOMfUG9uMytQIHVDd2aLlHebuPU6ClbJIzZ4DE4BNJGTdMO\",\n  \"grant_type\":\"authorization_code\",\n  \"client_id\": \"a27b002e-50cc-440f-9247-6a4f2e005ab1\",\n  \"client_secret\": \"f7a72ace8eed4773a3d9f1130361f034AgJjrcwKQbsQG4riWN7cjIaRZdMvMcNJ05Q4ImojfIqHjDBx8gLukA81F2JOPA7xNjZKnxauiY6bcTrWbYxqRdj07ZzPcaTf\"\n}",
+					"headers": "Content-Type: application/json\nAcc: application/json\n",
 					"pathVariables": {}
 				}
 			]
@@ -4982,7 +4996,7 @@
 			]
 		},
 		{
-			"id": "a4a5d33c-5984-4cf2-9b88-af35be35e667",
+			"id": "2af8ea23-9cc0-4553-89c4-b5ee60062396",
 			"name": "My Workspace - globals",
 			"values": [
 				{
