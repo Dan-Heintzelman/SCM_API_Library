@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4029858e-3453-376b-a765-d6ddb5a7bb3a",
+		"_postman_id": "f1295e27-879e-42c7-95de-4dcef1100b51",
 		"name": "Authentication",
 		"description": "Use these calls to authenticate and gain access to an API token that be used to make subquent calls against the API.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
