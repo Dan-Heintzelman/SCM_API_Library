@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b5cff6d9-3ebc-a47b-82a7-297fc0736180",
+		"_postman_id": "3d6158a7-5ff2-47a5-834c-40b9680cc021",
 		"name": "Object API",
 		"description": "The Object API exposes create, read, update, and delete actions for items that are commonly worked with in the SpringCM user interface.  The objects are exposed using RESTful conventions and JSON is the supported Request/Response format. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -415,7 +415,7 @@
 							],
 							"cookie": [
 								{
-									"expires": "Sat Jan 09 2038 22:14:07 GMT-0600 (CST)",
+									"expires": "Invalid Date",
 									"httpOnly": false,
 									"domain": "springcm.com",
 									"path": "/",
@@ -676,13 +676,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41?expand=Security",
+							"raw": "{{prefix}}{{version}}/folders/{{folderid}}?expand=Security",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"f9b22329-709d-e711-9c0d-3ca82a1e3f41"
+								"{{folderid}}"
 							],
 							"query": [
 								{
@@ -714,13 +714,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents?Limit=100",
+							"raw": "{{prefix}}{{version}}/folders/{{folderid}}/documents?Limit=100",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"f9b22329-709d-e711-9c0d-3ca82a1e3f41",
+								"{{folderid}}",
 								"documents"
 							],
 							"query": [
@@ -753,13 +753,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41?expand=Eosinfo",
+							"raw": "{{prefix}}{{version}}/folders/{{eosfolderid}}?expand=Eosinfo",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"0d0e6ba4-a3b2-e711-9c0d-3ca82a1e3f41"
+								"{{eosfolderid}}"
 							],
 							"query": [
 								{
@@ -791,13 +791,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/folders",
+							"raw": "{{prefix}}{{version}}/folders/{{folderid}}/folders",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"f8e7c854-759d-e711-9c0d-3ca82a1e3f41",
+								"{{folderid}}",
 								"folders"
 							]
 						},
@@ -824,13 +824,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/f8e7c854-759d-e711-9c0d-3ca82a1e3f41/sharelinks",
+							"raw": "{{prefix}}{{version}}/folders/{{folderid}}/sharelinks",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"f8e7c854-759d-e711-9c0d-3ca82a1e3f41",
+								"{{folderid}}",
 								"sharelinks"
 							]
 						},
@@ -857,7 +857,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders?path=%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder",
+							"raw": "{{prefix}}{{version}}/folders?path=enter folder path here",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
@@ -867,7 +867,7 @@
 							"query": [
 								{
 									"key": "path",
-									"value": "%2FSpringCM%20API%20Testing%20-%20UAT%2FObject%20API%2FFolders%2FTestFolder"
+									"value": "enter folder path here"
 								}
 							]
 						},
@@ -972,13 +972,13 @@
 							"raw": "{\n    \"Name\": \"TestFolder\",\n    \"CreatedDate\": \"2017-09-19T19:24:35.69Z\",\n    \"CreatedBy\": \"dheintzelman@springcm.com\",\n    \"UpdatedDate\": \"2017-09-19T19:24:35.69Z\",\n    \"UpdatedBy\": \"dheintzelman@springcm.com\",\n    \"Description\": \"A desription!\",\n    \"ParentFolder\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/d4442423-709d-e711-9c0d-3ca82a1e3f41\"\n    },\n    \"BrowseDocumentsUrl\": \"https://uatna11.springcm.com/atlas/Link/Folder/8806/f9b22329-709d-e711-9c0d-3ca82a1e3f41\",\n    \"AccessLevel\": {\n        \"See\": true,\n        \"Read\": true,\n        \"Write\": true,\n        \"Move\": true,\n        \"Create\": true,\n        \"SetAccess\": true\n    },\n    \"Documents\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents\"\n    },\n    \"Folders\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/folders\"\n    },\n    \"ShareLinks\": {\n        \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/sharelinks\"\n    },\n    \"CreateDocumentHref\": \"https://apiuploaduatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41/documents{?name}\",\n    \"Href\": \"https://apiuatna11.springcm.com/v201411/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41\"\n}"
 						},
 						"url": {
-							"raw": "{{prefix}}{{version}}/folders/f9b22329-709d-e711-9c0d-3ca82a1e3f41",
+							"raw": "{{prefix}}{{version}}/folders/{{folderid}}",
 							"host": [
 								"{{prefix}}{{version}}"
 							],
 							"path": [
 								"folders",
-								"f9b22329-709d-e711-9c0d-3ca82a1e3f41"
+								"{{folderid}}"
 							]
 						},
 						"description": "Get a folder by ID"
